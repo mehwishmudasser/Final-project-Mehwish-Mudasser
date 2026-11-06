@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mehwish Mudasser | Software Engineering Student</title>
+<meta name="description" content="Portfolio of a web development student: HTML, CSS, JavaScript, responsive design and GitHub Pages.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f6fb; --ink:#14213d; --muted:#4a5875; --line:#c9d3e6;
+  --card:#ffffff; --accent:#e8a200; --accent-ink:#14213d; --link:#1c4fd8;
+  --grid:rgba(20,33,61,.06);
+}
+:root[data-theme="dark"]{
+  --bg:#0f1729; --ink:#e8eefc; --muted:#a3b1d1; --line:#2a3a5f;
+  --card:#17223b; --accent:#ffc233; --accent-ink:#0f1729; --link:#8fb0ff;
+  --grid:rgba(232,238,252,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.65;color:var(--ink);
+  background:var(--bg);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;line-height:1.15;margin:0 0 .6em}
+h1{font-size:clamp(2rem,5.5vw,3.6rem);font-weight:800;max-width:20ch}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:700}
+h3{font-size:1.15rem;font-weight:700}
+a{color:var(--link)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:var(--card);padding:8px;z-index:20}
+
+.nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:12px 5vw;
+  background:var(--bg);border-bottom:1px solid var(--line)}
+.logo{font-family:"Bricolage Grotesque";font-weight:800;font-size:1.2rem;text-decoration:none;color:var(--accent-ink);
+  background:var(--accent);padding:2px 10px;border-radius:4px}
+nav{margin-left:auto}
+#menu{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+#menu a{color:var(--ink);text-decoration:none;font-weight:500}
+#menu a:hover{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:6px;text-decoration-thickness:3px}
+.icon-btn{background:none;border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-size:1rem;cursor:pointer;color:var(--ink)}
+#burger{display:none}
+
+main section{padding:72px 5vw;max-width:1100px;margin:0 auto}
+.hero{padding-top:64px}
+.kicker{display:inline-block;font-weight:500;color:var(--accent-ink);background:var(--accent);padding:2px 10px;border-radius:4px;margin:0 0 20px}
+.lead{max-width:60ch;color:var(--muted);font-size:1.1rem}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 48px}
+.btn{display:inline-block;font:500 1rem "IBM Plex Sans";padding:10px 20px;border:2px solid var(--ink);border-radius:6px;
+  color:var(--ink);background:transparent;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(.92);background:var(--accent);color:var(--accent-ink)}
+.btn.small{padding:6px 14px}
+
+.demo{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px}
+.demo h2{font-size:1.3rem;margin-bottom:.3em}
+.demo p{margin:0 0 16px;color:var(--muted)}
+.array{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.cell{width:44px;height:44px;display:grid;place-items:center;border:1.5px solid var(--line);border-radius:6px;
+  font-weight:500;transition:background .25s,opacity .25s}
+.cell.out{opacity:.25}
+.cell.mid{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.cell.found{background:#1f9d62;border-color:#1f9d62;color:#fff}
+.demo-controls{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+select,input,textarea{font:inherit;padding:8px 10px;border:1.5px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
+.status{min-height:1.6em;margin:0;color:var(--muted)}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0}
+.chips li{border:1.5px solid var(--ink);border-radius:999px;padding:3px 14px;background:var(--card)}
+#about ul:not(.chips){padding-left:1.2em}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.filter{font:500 .95rem "IBM Plex Sans";padding:6px 16px;border:1.5px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);cursor:pointer}
+.filter.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:8px;padding:20px}
+.card[hidden]{display:none}
+.card p{margin:0 0 10px;color:var(--muted)}
+.card .tech{color:var(--ink);font-weight:500;font-size:.92rem}
+
+.links{list-style:none;padding:0}
+.links li{margin-bottom:6px}
+form{display:flex;flex-direction:column;gap:6px}
+form label{font-weight:500;margin-top:8px}
+.err{color:#c62828;font-size:.9rem;min-height:1.2em}
+:root[data-theme="dark"] .err{color:#ff8a80}
+form .btn{align-self:flex-start;margin-top:10px}
+footer{border-top:1px solid var(--line);padding:24px 5vw;text-align:center;color:var(--muted);background:var(--bg)}
+
+@media (max-width:760px){
+  #burger{display:block}
+  nav{position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);display:none;margin:0}
+  nav.open{display:block}
+  #menu{flex-direction:column;gap:0}
+  #menu a{display:block;padding:14px 5vw}
+  .nav .icon-btn#theme{margin-left:auto}
+  .two-col{grid-template-columns:1fr;gap:32px}
+  main section{padding:48px 5vw}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <a class="logo" href="#home">MM</a>
+  <nav aria-label="Main">
+    <ul id="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <button id="theme" class="icon-btn" aria-label="Switch to dark theme">🌙</button>
+  <button id="burger" class="icon-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+</header>
+
+<main id="main">
+<section id="home" class="hero">
+  <p class="kicker">Software Engineering Student</p>
+  <h1>Hi, I'm Mehwish Mudasser.<br>I build responsive websites and learn by creating real projects.</h1>
+  <p class="lead">I solve data structure problems in C++ and build web projects with HTML, CSS, and JavaScript. This portfolio shows the main skills I learned in this course.</p>
+  <div class="cta">
+    <a class="btn primary" href="#projects">View my projects</a>
+    <a class="btn" href="#contact">Contact me</a>
+  </div>
+
+  <div class="demo" aria-labelledby="demo-title">
+    <h2 id="demo-title">Try it: binary search</h2>
+    <p>Pick a number from the sorted array. Each step halves the search range.</p>
+    <div id="array" class="array" role="list"></div>
+    <div class="demo-controls">
+      <label for="target">Find</label>
+      <select id="target"></select>
+      <button id="run" class="btn small">Run search</button>
+    </div>
+    <p id="status" class="status" aria-live="polite">Choose a number and press Run search.</p>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="two-col">
+    <div>
+      <p>I'm a software engineering student who has finished two semesters. I care more about understanding a problem deeply than rushing through a syllabus, so I solve DSA problems in C++ and write my own notes for each topic.</p>
+      <p>I'm still exploring which area of software engineering I enjoy most: web, systems, machine learning or mobile. This portfolio is part of that journey.</p>
+      <h3>Goals</h3>
+      <p>Strengthen my fundamentals, build real projects, and learn cloud computing and databases so I can work on complete applications.</p>
+    </div>
+    <div>
+      <h3>Skills I've learned</h3>
+      <ul class="chips">
+        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Responsive design</li>
+        <li>Git &amp; GitHub</li><li>C++</li><li>Data structures &amp; algorithms</li><li>Database basics</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="filters" role="group" aria-label="Filter projects">
+    <button class="filter active" data-filter="all">All</button>
+    <button class="filter" data-filter="web">HTML &amp; CSS</button>
+    <button class="filter" data-filter="js">JavaScript</button>
+  </div>
+  <div class="grid">
+    <article class="card" data-cat="web">
+      <h3>Responsive Portfolio Website</h3>
+      <p>The website you are viewing: four sections, a mobile menu, and a layout that adapts to phones and desktops.</p>
+      <p class="tech">HTML · CSS · Responsive design</p>
+      <a href="https://github.com/REPLACE-USERNAME/Final-project-Mehwish-Mudasser" target="_blank" rel="noopener">View on GitHub</a>
+    </article>
+    <article class="card" data-cat="js">
+      <h3>Binary Search Visualizer</h3>
+      <p>An interactive demo on the home page that shows step by step how binary search halves the search range.</p>
+      <p class="tech">JavaScript · DOM · Async/await</p>
+      <a href="https://github.com/REPLACE-USERNAME/Final-project-Mehwish-Mudasser" target="_blank" rel="noopener">View on GitHub</a>
+    </article>
+    <article class="card" data-cat="js">
+      <h3>Contact Form with Validation</h3>
+      <p>A contact form that checks the name, email and message and shows clear error messages before accepting it.</p>
+      <p class="tech">HTML · JavaScript</p>
+      <a href="https://github.com/REPLACE-USERNAME/Final-project-Mehwish-Mudasser" target="_blank" rel="noopener">View on GitHub</a>
+    </article>
+    <article class="card" data-cat="js">
+      <h3>Theme Toggle and Project Filter</h3>
+      <p>A light/dark theme switch that remembers the choice, and buttons that filter the project cards.</p>
+      <p class="tech">JavaScript · CSS variables</p>
+      <a href="https://github.com/REPLACE-USERNAME/Final-project-Mehwish-Mudasser" target="_blank" rel="noopener">View on GitHub</a>
+    </article>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="two-col">
+    <div>
+      <p>Want to talk about my projects or my work? Send me a message using the form.</p>
+      <ul class="links">
+        <li><a href="mailto:REPLACE-EMAIL">REPLACE-EMAIL</a></li>
+        <li><a href="https://github.com/REPLACE-USERNAME" target="_blank" rel="noopener">github.com/REPLACE-USERNAME</a></li>
+        <li><a href="https://github.com/REPLACE-USERNAME/Final-project-Mehwish-Mudasser" target="_blank" rel="noopener">Project repository</a></li>
+      </ul>
+    </div>
+    <form id="form" novalidate>
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" autocomplete="name">
+      <span class="err" id="e-name"></span>
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email">
+      <span class="err" id="e-email"></span>
+      <label for="msg">Message</label>
+      <textarea id="msg" name="msg" rows="4"></textarea>
+      <span class="err" id="e-msg"></span>
+      <button class="btn primary" type="submit">Send message</button>
+      <p id="sent" class="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer><p>© <span id="year"></span> Mehwish Mudasser. Built with HTML, CSS, and JavaScript.</p></footer>
+<script>
+// 1. Theme toggle (remembers choice)
+const root = document.documentElement, themeBtn = document.getElementById('theme');
+function setTheme(t){
+  root.dataset.theme = t;
+  themeBtn.textContent = t === 'dark' ? '☀️' : '🌙';
+  themeBtn.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+  try { localStorage.setItem('theme', t); } catch (e) {}
+}
+let saved = null; try { saved = localStorage.getItem('theme'); } catch (e) {}
+setTheme(saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+themeBtn.onclick = () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+
+// 2. Mobile menu
+const burger = document.getElementById('burger'), nav = document.querySelector('nav');
+burger.onclick = () => burger.setAttribute('aria-expanded', nav.classList.toggle('open'));
+nav.addEventListener('click', e => { if (e.target.tagName === 'A') { nav.classList.remove('open'); burger.setAttribute('aria-expanded', false); } });
+
+// 3. Binary search visualiser (main JavaScript interaction)
+const nums = Array.from({length: 15}, (_, i) => 3 + i * 4);   // sorted: 3, 7, 11 ... 59
+const arr = document.getElementById('array'), sel = document.getElementById('target');
+const status = document.getElementById('status'), run = document.getElementById('run');
+nums.forEach((n, i) => {
+  arr.insertAdjacentHTML('beforeend', `<div class="cell" role="listitem" data-i="${i}">${n}</div>`);
+  sel.insertAdjacentHTML('beforeend', `<option value="${n}">${n}</option>`);
+});
+const cells = [...arr.children];
+const wait = ms => new Promise(r => setTimeout(r, ms));
+run.onclick = async () => {
+  run.disabled = true;
+  cells.forEach(c => c.className = 'cell');
+  const target = +sel.value; let lo = 0, hi = nums.length - 1, step = 0;
+  while (lo <= hi) {
+    const mid = (lo + hi) >> 1; step++;
+    cells.forEach((c, i) => c.classList.toggle('out', i < lo || i > hi));
+    cells[mid].classList.add('mid');
+    status.textContent = `Step ${step}: look at ${nums[mid]} (index ${mid}).`;
+    await wait(900);
+    if (nums[mid] === target) {
+      cells[mid].classList.replace('mid', 'found');
+      status.textContent = `Found ${target} at index ${mid} in ${step} step${step > 1 ? 's' : ''}. A linear scan could need up to ${nums.length}.`;
+      break;
+    }
+    cells[mid].classList.remove('mid');
+    if (nums[mid] < target) { status.textContent = `${nums[mid]} is too small, so search the right half.`; lo = mid + 1; }
+    else { status.textContent = `${nums[mid]} is too big, so search the left half.`; hi = mid - 1; }
+    await wait(700);
+  }
+  run.disabled = false;
+};
+
+// 4. Project filter
+document.querySelectorAll('.filter').forEach(btn => btn.onclick = () => {
+  document.querySelectorAll('.filter').forEach(b => b.classList.toggle('active', b === btn));
+  document.querySelectorAll('.card').forEach(c => c.hidden = btn.dataset.filter !== 'all' && c.dataset.cat !== btn.dataset.filter);
+});
+
+// 5. Contact form validation
+const form = document.getElementById('form');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const v = id => form.elements[id].value.trim();
+  const errs = {
+    name: v('name') ? '' : 'Enter your name.',
+    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email')) ? '' : 'Enter a valid email address.',
+    msg: v('msg').length >= 10 ? '' : 'Write at least 10 characters.'
+  };
+  Object.keys(errs).forEach(k => document.getElementById('e-' + k).textContent = errs[k]);
+  const sent = document.getElementById('sent');
+  if (Object.values(errs).every(x => !x)) { sent.textContent = `Thanks, ${v('name')}. Your message is ready to send.`; form.reset(); }
+  else sent.textContent = '';
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+</script>
+</body>
+</html>
